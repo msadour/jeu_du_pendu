@@ -1,4 +1,4 @@
-liste_mots = [
+list_words = [
     "sql",
     "git",
     "css",
@@ -9,13 +9,13 @@ liste_mots = [
 ]
 
 """
-liste_total_mot sera sous la forme [ [["A', False], ['B', False]], [["A', False], ['B', False]] ...]
-où False signifiant que le mot n'est pas affiché
+list_total_words will loke like it : [ [["A', False], ['B', False]], [["A', False], ['B', False]] ...]
+where False mean that the letter is not display
 """
 
-liste_total_mot = []
-for un_mot in liste_mots:
-    liste_du_mot = []
-    for une_lettre in un_mot:
-        liste_du_mot.append([une_lettre, False])
-    liste_total_mot.append(liste_du_mot)
+list_total_words = []
+for a_word in list_words:
+    list_of_a_word = []
+    for a_letter in a_word:
+        list_of_a_word.append([a_letter, False])
+    list_total_words.append(list_of_a_word)

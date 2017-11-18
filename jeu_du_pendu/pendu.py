@@ -1,46 +1,44 @@
 import pickle
-from donnees import liste_total_mot
-from fonction import *
+from jeu_du_pendu.donnees import list_total_words
+from jeu_du_pendu.fonction import *
 
-
-global encore_en_vie
-encore_en_vie = True
-while encore_en_vie == True:
-    for le_mot in liste_total_mot:
-        if encore_en_vie == False:
+is_in_life = True
+while is_in_life == True:
+    for current_word in list_total_words:
+        if is_in_life == False:
             break
-        est_pas_fini = True
-        nb_coup = len(le_mot)
-        while est_pas_fini:
-            mot_visible = visualiser_mot(le_mot)
-            print(mot_visible)
+        is_not_finish = True
+        nb_try = len(current_word)
+        while is_not_finish:
+            display_word = show_word(current_word)
+            print(display_word)
 
-            print("nombre de coup : " + str(nb_coup))
-            reponse = input("Veuillez saisir une reponse : ")
-            resultat = jouer_une_lettre(le_mot, reponse)
+            print("nombre de coup : " + str(nb_try))
+            answer = input("Veuillez saisir une reponse : ")
+            result = play_a_answer(current_word, answer)
 
-            if resultat:
-                mot_courant = "".join([l[0] for l in le_mot])
-                dernier_mot = "".join([l[0] for l in liste_total_mot[len(liste_total_mot)-1]])
-                if mot_courant == dernier_mot and verifie_si_gagner(le_mot):
-                    print("Bravo ! le mot à trouver etait : " +  mot_courant)
+            if result:
+                word = "".join([l[0] for l in current_word])
+                last_word = "".join([l[0] for l in list_total_words[len(list_total_words)-1]])
+                if word == last_word and check_if_win(current_word):
+                    print("Bravo ! le mot à trouver etait : " +  word)
                     print("\n\nFelicitation vous avez gagné !!")
-                    encore_en_vie = False
-                    est_pas_fini = False
+                    is_in_life = False
+                    is_not_finish = False
                     break
 
-                if verifie_si_gagner(le_mot):
-                    print("Bravo ! le mot à trouver etait : " + mot_courant)
-                    est_pas_fini = False
+                if check_if_win(current_word):
+                    print("Bravo ! le mot à trouver etait : " + word)
+                    is_not_finish = False
                     break
             else:
-                nb_coup -= 1
-                if nb_coup == 0:
-                    encore_en_vie = False
-                    est_pas_fini = False
+                nb_try -= 1
+                if nb_try == 0:
+                    is_in_life = False
+                    is_not_finish = False
                     break
                 else:
-                    mot_visible = visualiser_mot(le_mot)
-                    print(mot_visible + "\n")
+                    display_word = show_word(current_word)
+                    print(display_word + "\n")
 
 print("La partie est terminé !!")

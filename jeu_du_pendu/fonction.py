@@ -1,65 +1,64 @@
-def check_lettre_mot(lettre_saisie, liste_du_mot):
+def check_if_letter_in_word(letter_answer, list_of_the_word):
     """
-    Permet de verifier si la lettre jouer est contenue dans le mot
-    :param lettre_saisie:
-    :param liste_du_mot:
+    check if letter is in word
+    :param letter_answer:
+    :param list_of_the_word:
     :return:
     """
-    nb_trouve = 0
-    for une_lettre in liste_du_mot:
-        if lettre_saisie == une_lettre[0]:
-            nb_trouve += 1
-    if nb_trouve > 0:
+    nb_found = 0
+    for a_letter in list_of_the_word:
+        if letter_answer == a_letter[0]:
+            nb_found += 1
+    if nb_found > 0:
         return True
     else:
         False
 
-def jouer_une_lettre(liste_du_mot, reponse=""):
+def play_a_answer(list_of_the_word, answer=""):
     """
-    Permet au joueur de jouer une lettre (ou directement un mot)
+    try to play a answer
     :param liste_du_mot:
     :param reponse:
     :return:
     """
-    if len(reponse) == 1:
-        if check_lettre_mot(reponse, liste_du_mot):
-            for une_lettre in liste_du_mot:
-                if reponse == une_lettre[0]:
-                    une_lettre[1] = True
+    if len(answer) == 1:
+        if check_if_letter_in_word(answer, list_of_the_word):
+            for a_letter in list_of_the_word:
+                if answer == a_letter[0]:
+                    a_letter[1] = True
             return True
         else:
             return False
     else:
-        liste_lettre_du_mot = [l[0] for l in liste_du_mot]
-        str_mot = "".join(liste_lettre_du_mot)
-        if reponse == str_mot:
-            for une_lettre in liste_du_mot:
-                une_lettre[1] = True
+        liste_lettre_du_mot = [l[0] for l in list_of_the_word]
+        word_str = "".join(liste_lettre_du_mot)
+        if answer == word_str:
+            for a_letter in list_of_the_word:
+                a_letter[1] = True
             return True
         else:
             return False
 
-def visualiser_mot(liste_du_mot):
+def show_word(list_of_the_word):
     """
-    Permet de visualiser le mot à la console
-    :param liste_du_mot:
+    show the word in the console
+    :param list_of_the_word:
     :return:
     """
-    mot_a_visualise = ""
-    for lettre in liste_du_mot:
-        lettre = '*' if lettre[1] == False else lettre[0]
-        # lettre = lettre[0]
-        mot_a_visualise = mot_a_visualise + lettre
-    return mot_a_visualise
+    word_for_show = ""
+    for letter in list_of_the_word:
+        letter = '*' if letter[1] == False else letter[0]
+        word_for_show = word_for_show + letter
+    return word_for_show
 
-def verifie_si_gagner(liste_du_mot):
+def check_if_win(list_of_the_word):
     """
-    Verifie si le mot complet a été trouvé (si l'etat de chaque lettre est a True, donc affiché)
+    check if all the word is display
     :param liste_du_mot:
     :return:
     """
-    liste_etat = [etat[1] for etat in liste_du_mot]
-    if False not in liste_etat:
+    liste_displayed_word = [word[1] for word in list_of_the_word]
+    if False not in liste_displayed_word:
         return True
     else:
         return False

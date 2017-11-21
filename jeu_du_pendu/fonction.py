@@ -1,3 +1,5 @@
+import pickle
+
 def check_if_letter_in_word(letter_answer, list_of_the_word):
     """
     check if letter is in word
@@ -62,3 +64,8 @@ def check_if_win(list_of_the_word):
         return True
     else:
         return False
+
+# def save_score(dict_score, file):
+#     with open('scores', 'wb') as fichier:
+        # my_pickler = pickle.Pickler(file)  # On creer le conteneur
+        # my_pickler.dump(score)  # On y met notre objet

@@ -34,8 +34,7 @@ while game_is_finish == True:
                     print("Bravo ! le mot à trouver etait : " +  word)
                     print("\n\nFelicitation vous avez fini le jeu !!")
                     score_dict[your_nickname] += 1
-                    game_is_finish = False
-                    word_is_not_finish = False
+                    game_is_finish, word_is_not_finish = False, False
                     break
 
                 if check_if_win(current_word):
@@ -46,8 +45,7 @@ while game_is_finish == True:
                 nb_try -= 1
                 if nb_try == 0: #When the number of try is 0, the game is finish
                     score_dict[your_nickname] -= 1
-                    game_is_finish = False
-                    word_is_not_finish = False
+                    game_is_finish, word_is_not_finish = False, False
                     break
                 else:
                     display_word = show_word(current_word)

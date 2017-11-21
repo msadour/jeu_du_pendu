@@ -15,7 +15,5 @@ where False mean that the letter is not display
 
 list_total_words = []
 for a_word in list_words:
-    list_of_a_word = []
-    for a_letter in a_word:
-        list_of_a_word.append([a_letter, False])
+    list_of_a_word = [[a_letter, False] for a_letter in a_word]
     list_total_words.append(list_of_a_word)
